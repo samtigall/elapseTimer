@@ -1,7 +1,11 @@
+Fork: 
++ Hand in the actual month Number. 
++ Display the Elapsed Time as Time with counting hours and no additional formating e.g. 1day2hours=> 26:00:00
+
 Elapsed Timer Read Me!
 Created by:	Emil Krautmann
 Website:	http://ecoders.wordpress.com
-Copyright:	© 2010
+Copyright:	Â© 2010
 Available:	Free for everyone to use as long as the header section is intact in the elapseMe.js file.
 
 Description:
