@@ -21,7 +21,7 @@ var elapseMe = 	(function elapseTimer(settings)
 		var startDate = new Date();
 
 		startDate.setYear(settings.year);
-		startDate.setMonth(settings.month);
+		startDate.setMonth(settings.month -1);
 		startDate.setDate(settings.day);
 		startDate.setHours(settings.hr);
 		startDate.setMinutes(settings.min);
@@ -31,12 +31,7 @@ var elapseMe = 	(function elapseTimer(settings)
 		/* Get elapsed time. */
 		var elapsedTime = rightNow.getTime() - startDate.getTime();
 
-		/* Get 1 day in milliseconds, ie 1000*60*60*24 */
-		var one_day =  86400000;
-		var elapsedDays = Math.floor( elapsedTime / one_day );
-
-		/* Milliseconds still unaccounted for - less than a day's worth. */
-		var milliSecondsRemaining = elapsedTime % one_day;
+		var milliSecondsRemaining = elapsedTime;
 
 		/* Get 1 hour in milliseconds, ie 1000*60*60 */
 		var one_hour = 3600000;
@@ -56,10 +51,9 @@ var elapseMe = 	(function elapseTimer(settings)
 		var one_second = 1000;
 		var elapsedSeconds = Math.round(milliSecondsRemaining / one_second);
 
-		var resultOut  = (settings.show == "all" || settings.show.match(/days/gi) ) ? elapsedDays + " Day" + ((elapsedDays == 1) ? " ":"s ") :"";
-		resultOut += (settings.show == "all" || settings.show.match(/hours/gi) ) ? elapsedHours + " Hour" + ((elapsedHours == 1) ? " ":"s ") :"";
-		resultOut += (settings.show == "all" || settings.show.match(/minutes/gi) ) ? elapsedMinutes + " Minute" + ((elapsedMinutes == 1) ? " ":"s ") :"";
-		resultOut += (settings.show == "all" || settings.show.match(/seconds/gi) ) ? elapsedSeconds + " Second" + ((elapsedSeconds == 1) ? " ":"s ") :"";
+		var resultOut = (settings.show == "all" || settings.show.match(/hours/gi) ) ? elapsedHours + ":":"";
+		resultOut += (settings.show == "all" || settings.show.match(/minutes/gi) ) ? elapsedMinutes + ":":"";
+		resultOut += (settings.show == "all" || settings.show.match(/seconds/gi) ) ? elapsedSeconds + "":"";
 
 		document.getElementById(settings.targetId).innerHTML = resultOut;
 
