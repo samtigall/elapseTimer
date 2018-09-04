@@ -43,6 +43,9 @@ var elapseMe = 	(function elapseTimer(settings)
 		/* Get 1 minute in milliseconds, ie 1000*60 */
 		var one_minute = 60000;
 		var elapsedMinutes = Math.floor(milliSecondsRemaining / one_minute );
+		if ((elapsedMinutes + "").length != 2) {
+			elapsedMinutes = "0" + elapsedMinutes;
+		}
 
 		/* Milliseconds still unaccounted for - less than a minute's worth. */
 		milliSecondsRemaining = milliSecondsRemaining % one_minute;
@@ -50,6 +53,9 @@ var elapseMe = 	(function elapseTimer(settings)
 		/* Get 1 second in milliseconds */
 		var one_second = 1000;
 		var elapsedSeconds = Math.round(milliSecondsRemaining / one_second);
+		if ((elapsedSeconds + "").length != 2) {
+			elapsedSeconds = "0" + elapsedSeconds;
+		}
 
 		var resultOut = (settings.show == "all" || settings.show.match(/hours/gi) ) ? elapsedHours + ":":"";
 		resultOut += (settings.show == "all" || settings.show.match(/minutes/gi) ) ? elapsedMinutes + ":":"";
